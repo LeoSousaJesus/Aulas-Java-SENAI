@@ -49,11 +49,11 @@ public class UsuarioDesign extends javax.swing.JFrame {
     // Adiciona os usuários na tabela, linha a linha
     for (Usuario u : lista) {
         Object[] linha = new Object[]{
-            u.getIdUsuario(),        // Coluna ID (oculta)
-            u.getNomeUsuario(),      // Nome
-            u.getEmailUsuario(),     // E-mail
-            u.getTelefoneUsuario(),  // Telefone
-            u.getTipoUsuario()       // Tipo
+            u.getId(),        // Coluna ID (oculta)
+            u.getNome(),      // Nome
+            u.getEmail(),     // E-mail
+            u.getTelefone(),  // Telefone
+            u.getTipo_usuario()       // Tipo
         };
         modelo.addRow(linha);
     }
@@ -167,45 +167,43 @@ public class UsuarioDesign extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(286, 286, 286)
                 .addComponent(jLabel1)
-                .addContainerGap(479, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel4)
-                                    .addComponent(jLabel5))
-                                .addGap(45, 45, 45)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(txbTipo, javax.swing.GroupLayout.DEFAULT_SIZE, 218, Short.MAX_VALUE)
-                                    .addComponent(txbTelefone)))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel3)
-                                    .addComponent(jLabel2))
-                                .addGap(31, 31, 31)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(txbNome)
-                                    .addComponent(txbEmail, javax.swing.GroupLayout.DEFAULT_SIZE, 218, Short.MAX_VALUE)))))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createSequentialGroup()
+                            .addGap(33, 33, 33)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jLabel5)
+                                .addComponent(jLabel4))
+                            .addGap(18, 18, 18)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(txbTipo, javax.swing.GroupLayout.DEFAULT_SIZE, 287, Short.MAX_VALUE)
+                                .addComponent(txbTelefone)))
+                        .addGroup(layout.createSequentialGroup()
+                            .addGap(25, 25, 25)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(jLabel3)
+                                .addComponent(jLabel2))
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(txbNome, javax.swing.GroupLayout.DEFAULT_SIZE, 287, Short.MAX_VALUE)
+                                .addComponent(txbEmail))))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(161, 161, 161)
                         .addComponent(btnSalvar)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGap(70, 70, 70)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(btnBuscar)
-                        .addGap(47, 47, 47)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnListar)
+                        .addGap(18, 18, 18)
                         .addComponent(btnAlterar)
-                        .addGap(35, 35, 35)
-                        .addComponent(btnExcluir)
-                        .addGap(42, 42, 42))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(btnListar, javax.swing.GroupLayout.PREFERRED_SIZE, 315, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 315, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(131, 131, 131))))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnExcluir))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 345, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(131, 131, 131))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -231,14 +229,13 @@ public class UsuarioDesign extends javax.swing.JFrame {
                             .addComponent(jLabel5)
                             .addComponent(txbTipo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addComponent(btnListar)
-                .addGap(12, 12, 12)
+                .addGap(53, 53, 53)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnAlterar, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnExcluir, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnListar, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(190, Short.MAX_VALUE))
         );
 
@@ -246,14 +243,14 @@ public class UsuarioDesign extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
-    Usuario usuario = new Usuario();
-    usuario.setNomeUsuario(txbNome.getText());
-    usuario.setEmailUsuario(txbEmail.getText());
-    usuario.setTelefoneUsuario(Integer.parseInt(txbTelefone.getText()));
-    usuario.setTipoUsuario(txbTipo.getText());
+    Usuario usuarios = new Usuario();
+    usuarios.setNome(txbNome.getText());
+    usuarios.setEmail(txbEmail.getText());
+    usuarios.setTelefone(txbTelefone.getText());
+    usuarios.setTipo_usuario(txbTipo.getText());
 
     UsuarioDao dao = new UsuarioDao();
-    boolean sucesso = dao.salvarUsuario(usuario);
+    boolean sucesso = dao.salvarUsuario(usuarios);
 
     if (sucesso) {
         JOptionPane.showMessageDialog(this, "Usuário salvo com sucesso!");
@@ -274,15 +271,15 @@ public class UsuarioDesign extends javax.swing.JFrame {
         return;
     }
 
-    Usuario usuario = new Usuario();
-    usuario.setIdUsuario(idSelecionado);
-    usuario.setNomeUsuario(txbNome.getText());
-    usuario.setEmailUsuario(txbEmail.getText());
-    usuario.setTelefoneUsuario(Integer.parseInt(txbTelefone.getText()));
-    usuario.setTipoUsuario(txbTipo.getText());
+    Usuario usuarios = new Usuario();
+    usuarios.setId(idSelecionado);
+    usuarios.setNome(txbNome.getText());
+    usuarios.setEmail(txbEmail.getText());
+    usuarios.setTelefone(txbTelefone.getText());
+    usuarios.setTipo_usuario(txbTipo.getText());
 
     UsuarioDao dao = new UsuarioDao();
-    boolean sucesso = dao.atualizarUsuario(usuario);
+    boolean sucesso = dao.atualizarUsuario(usuarios);
 
     if (sucesso) {
         JOptionPane.showMessageDialog(this, "Usuário atualizado com sucesso!");

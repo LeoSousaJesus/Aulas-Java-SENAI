@@ -28,13 +28,13 @@ public class UsuarioDao {
 
     public List<Usuario> listarUsuarios() {
         List<Usuario> lista = new ArrayList<>();
-        String sql = "SELECT idUsuario, nomeUsuario, emailUsuario, telefoneUsuario, tipoUsuario FROM usuario ORDER BY nomeUsuario ASC";
+        String sql = "SELECT id, nome, email, telefone, tipo_usuario FROM usuarios ORDER BY nome ASC";
 
         try (Connection conn = conectar(); PreparedStatement stmt = conn.prepareStatement(sql); ResultSet rs = stmt.executeQuery()) {
 
             while (rs.next()) {
-                Usuario u = new Usuario();
-                u.setIdUsuario(rs.getInt("id"));
+                Usuario u = new Usuario
+                u.setId(rs.getInt("id"));
                 u.setNome(rs.getString("nome"));
                 u.setEmail(rs.getString("email"));
                 u.setTelefone(rs.getString("telefone"));
@@ -49,15 +49,15 @@ public class UsuarioDao {
     }
 
     //***************Método que insere e salva um registro no banco de dados****************************************///
-    public boolean salvarUsuario(Usuario usuario) {
+    public boolean salvarUsuario(Usuario usuarios) {
         String sql = "INSERT INTO usuario (nome, email, telefone, tipo_usuario) VALUES (?, ?, ?, ?)";
 
         try (Connection conn = conectar(); PreparedStatement stmt = conn.prepareStatement(sql)) {
 
-            stmt.setString(1, usuario.getNome());
-            stmt.setString(2, usuario.getEmail());
-            stmt.setString(3, usuario.getTelefone());
-            stmt.setString(4, usuario.getTipo_usuario());
+            stmt.setString(1, usuarios.getNome());
+            stmt.setString(2, usuarios.getEmail());
+            stmt.setString(3, usuarios.getTelefone());
+            stmt.setString(4, usuarios.getTipo_usuario());
 
             int rowsInserted = stmt.executeUpdate();
             return rowsInserted > 0;
@@ -73,11 +73,11 @@ public class UsuarioDao {
 
         try (Connection conn = conectar(); PreparedStatement stmt = conn.prepareStatement(sql)) {
 
-            stmt.setString(1, usuario.getNomeUsuario());
-            stmt.setString(2, usuario.getEmailUsuario());
-            stmt.setInt(3, usuario.getTelefoneUsuario());
-            stmt.setString(4, usuario.getTipoUsuario());
-            stmt.setInt(5, usuario.getIdUsuario());
+            stmt.setString(1, usuario.getNome());
+            stmt.setString(2, usuario.getEmail());
+            stmt.setString(3, usuario.getTelefone());
+            stmt.setString(4, usuario.getTipo_usuario());
+            stmt.setInt(5, usuario.getId());
 
             return stmt.executeUpdate() > 0;
         } catch (SQLException e) {
