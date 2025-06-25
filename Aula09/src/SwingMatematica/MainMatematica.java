@@ -1,13 +1,16 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package SwingMatematica;
 
-/**
- *
- * @author ead
- */
 public class MainMatematica {
+    
+    public static void main(String[] args){
+        
+        Matematica matematica = new Matematica();
+        
+        matematica.soma(15, 23);
+        
+        System.out.println(matematica.soma(15, 23));
+        
+        
+    }
     
 }
