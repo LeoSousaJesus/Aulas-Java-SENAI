@@ -2,50 +2,58 @@ package cadastro;
 
 public class Usuario {
 
-    private int idUsuario;
-    private String nomeUsuario;
-    private String emailUsuario;
-    private int telefoneUsuario;
-    private String tipoUsuario;
+    private int id;
+    private String nome;
+    private String email;
+    private String telefone;
+    private String tipo_usuario;
 
-    public int getIdUsuario() {
-        return idUsuario;
+    public Usuario(int id, String nome, String email, String telefone, String tipo_usuario) {
+        this.id = id;
+        this.nome = nome;
+        this.email = email;
+        this.telefone = telefone;
+        this.tipo_usuario = tipo_usuario;
     }
 
-    public void setIdUsuario(int idUsuario) {
-        this.idUsuario = idUsuario;
+    public int getId() {
+        return id;
     }
 
-    public String getNomeUsuario() {
-        return nomeUsuario;
+    public void setId(int id) {
+        this.id = id;
     }
 
-    public void setNomeUsuario(String nomeUsuario) {
-        this.nomeUsuario = nomeUsuario;
+    public String getNome() {
+        return nome;
     }
 
-    public String getEmailUsuario() {
-        return emailUsuario;
+    public void setNome(String nome) {
+        this.nome = nome;
     }
 
-    public void setEmailUsuario(String emailUsuario) {
-        this.emailUsuario = emailUsuario;
+    public String getEmail() {
+        return email;
     }
 
-    public int getTelefoneUsuario() {
-        return telefoneUsuario;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
-    public void setTelefoneUsuario(int telefoneUsuario) {
-        this.telefoneUsuario = telefoneUsuario;
+    public String getTelefone() {
+        return telefone;
     }
 
-    public String getTipoUsuario() {
-        return tipoUsuario;
+    public void setTelefone(String telefone) {
+        this.telefone = telefone;
     }
 
-    public void setTipoUsuario(String tipoUsuario) {
-        this.tipoUsuario = tipoUsuario;
+    public String getTipo_usuario() {
+        return tipo_usuario;
+    }
+
+    public void setTipo_usuario(String tipo_usuario) {
+        this.tipo_usuario = tipo_usuario;
     }
 
 }
