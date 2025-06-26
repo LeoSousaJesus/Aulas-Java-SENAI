@@ -3,6 +3,7 @@
 package cadastro;
 
 // Importa as classes necessárias.
+import java.awt.event.ActionEvent;
 import java.util.List;                              // Para usar a interface List.
 import javax.swing.JOptionPane;                     // Para exibir caixas de diálogo (mensagens, alertas).
 import javax.swing.table.DefaultTableModel;         // Modelo padrão para JTable, que permite manipular linhas e colunas.
@@ -269,12 +270,53 @@ public class UsuarioDesign extends javax.swing.JFrame {
         carregarTabela();        
     }//GEN-LAST:event_btnListarActionPerformed
 
+    // Adicione ou substitua este método na sua classe UsuarioDesign.java
+    private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {                                          
+        // Cria uma nova instância da nossa caixa de diálogo de busca.
+        // 'this' é a janela principal, 'true' significa que ela será modal (bloqueia a principal).
+        Buscar dialogoBuscar = new Buscar(this, true);
+        
+        // Torna a caixa de diálogo visível. O código aqui vai "pausar" até o usuário fechar a diálogo.
+        dialogoBuscar.setVisible(true);
+        
+        // Depois que a diálogo for fechada, pegamos o resultado.
+        Usuario usuario = dialogoBuscar.getUsuarioEncontrado();
+        
+        // Verifica se um usuário foi realmente encontrado.
+        if (usuario != null) {
+            // Se sim, preenche os campos de texto com os dados do usuário.
+            txbNome.setText(usuario.getNome());
+            txbEmail.setText(usuario.getEmail());
+            txbTelefone.setText(usuario.getTelefone());
+            txbTipo.setText(usuario.getTipo_usuario());
+            
+            // Também atualizamos a variável 'idSelecionado' para que o botão "Alterar" funcione com este usuário.
+            idSelecionado = usuario.getId();
+            
+        } else {
+            // Se nenhum usuário foi encontrado (ou o usuário fechou a janela), mostra um aviso.
+            // Verifica se o campo de busca não estava vazio para não mostrar a mensagem quando se cancela a busca.
+            JOptionPane.showMessageDialog(this, "Usuário com o ID informado não foi encontrado.", "Busca sem Resultado", JOptionPane.INFORMATION_MESSAGE);
+        }
+    }
+    
     private void btnAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAlterarActionPerformed
         if (idSelecionado == -1) {
         JOptionPane.showMessageDialog(this, "Selecione um usuário na tabela primeiro.");
         return;
     }
+        
+        // No construtor public UsuarioDesign(), adicione esta configuração para o botão:
+        btnBuscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBuscarActionPerformed(evt);
+            }
 
+            private void btnBuscarActionPerformed(ActionEvent evt) {
+                throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+            }
+        });
+        
     Usuario usuarios = new Usuario();
     usuarios.setId(idSelecionado);
     usuarios.setNome(txbNome.getText());
