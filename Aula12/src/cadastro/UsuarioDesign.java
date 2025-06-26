@@ -1,8 +1,12 @@
+// UsuarioDesign.java
+// Define o pacote onde esta classe está localizada.
 package cadastro;
 
-import java.util.List;
-import javax.swing.JOptionPane;
-import javax.swing.table.DefaultTableModel;
+// Importa as classes necessárias.
+import java.util.List;                              // Para usar a interface List.
+import javax.swing.JOptionPane;                     // Para exibir caixas de diálogo (mensagens, alertas).
+import javax.swing.table.DefaultTableModel;         // Modelo padrão para JTable, que permite manipular linhas e colunas.
+
 
 public class UsuarioDesign extends javax.swing.JFrame {
     
