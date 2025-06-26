@@ -27,7 +27,7 @@ public class ConnectionFactory {
             // localhost:3306 -> Endereço do servidor e porta.
             // /cadastro -> Nome do banco de dados (schema).
             // ?useSSL=false -> Parâmetro para desabilitar o uso de SSL (CORRIGIDO: era useSS!=false).
-            String url = "jdbc:mariadb://localhost:3306/cadastro?useSSL=false";
+            String url = "jdbc:mysql://localhost:3306/cadastro?useSSL=false&serverTimezone=UTC";
 
             // Define o nome de usuário do banco de dados.
             String user = "root";

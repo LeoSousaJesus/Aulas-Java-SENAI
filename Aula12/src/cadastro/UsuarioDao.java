@@ -54,6 +54,49 @@ public class UsuarioDao {
         // Retorna a lista de usuários (pode estar vazia se não houver registros ou se ocorrer um erro).
         return lista;
     }
+    
+    /**
+     * Busca um usuário específico no banco de dados pelo seu ID.
+     * @param id O ID do usuário a ser procurado.
+     * @return um objeto Usuario com os dados encontrados, ou null se o usuário não for encontrado.
+     */
+    public Usuario buscarPorId(int id) {
+        // A query SQL para selecionar um usuário com um ID específico.
+        String sql = "SELECT id, nome, email, telefone, tipo_usuario FROM usuarios WHERE id = ?";
+        Usuario usuario = null; // Inicia o objeto como nulo.
+
+        // Usa try-with-resources para garantir que a conexão e o statement sejam fechados.
+        try (Connection conn = new ConnectionFactory().connectaDB();
+             PreparedStatement stmt = conn.prepareStatement(sql)) {
+
+            // Define o valor do primeiro placeholder (?) na query SQL para o ID fornecido.
+            stmt.setInt(1, id);
+
+            // Executa a consulta e armazena o resultado no ResultSet.
+            try (ResultSet rs = stmt.executeQuery()) {
+
+                // Verifica se a consulta retornou algum resultado.
+                // Usamos 'if' em vez de 'while' porque esperamos no máximo um único usuário.
+                if (rs.next()) {
+                    // Se um usuário foi encontrado, cria um novo objeto Usuario com os dados do ResultSet.
+                    usuario = new Usuario(
+                        rs.getInt("id"),
+                        rs.getString("nome"),
+                        rs.getString("email"),
+                        rs.getString("telefone"),
+                        rs.getString("tipo_usuario")
+                    );
+                }
+            }
+
+        } catch (SQLException e) {
+            // Se ocorrer um erro, imprime no console.
+            e.printStackTrace();
+        }
+
+        // Retorna o objeto 'usuario' (que será nulo se ninguém for encontrado ou se ocorrer um erro).
+        return usuario;
+    }
 
     /**
      * Insere um novo registro de usuário no banco de dados.
